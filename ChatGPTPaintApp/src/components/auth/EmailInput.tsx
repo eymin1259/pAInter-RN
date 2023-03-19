@@ -2,11 +2,20 @@ import React from 'react';
 import styled from '@emotion/native';
 import {Platform} from 'react-native';
 
-const EmailInput = () => {
+interface IEmailInputProps {
+  error?: string;
+  onChangeText: (text: String) => void;
+}
+
+const EmailInput = ({error, onChangeText}: IEmailInputProps) => {
   return (
     <EmailInputContainer>
-      <EmailTextInput keyboardType="email-address" placeholder="email" />
-      <EmailValidationError>asd</EmailValidationError>
+      <EmailTextInput
+        keyboardType="email-address"
+        placeholder="email"
+        onChangeText={onChangeText}
+      />
+      <EmailValidationError>{error}</EmailValidationError>
     </EmailInputContainer>
   );
 };

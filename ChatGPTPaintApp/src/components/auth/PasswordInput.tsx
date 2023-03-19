@@ -2,11 +2,25 @@ import React from 'react';
 import styled from '@emotion/native';
 import {Platform} from 'react-native';
 
-const PasswordInput = () => {
+interface IPasswordInputProps {
+  error?: string;
+  onChangeText: (text: String) => void;
+  placeholder?: string;
+}
+
+const PasswordInput = ({
+  error,
+  onChangeText,
+  placeholder,
+}: IPasswordInputProps) => {
   return (
     <PasswordInputContainer>
-      <PasswordTextInput keyboardType="ascii-capable" placeholder="password" />
-      <PasswordValidationError>asd</PasswordValidationError>
+      <PasswordTextInput
+        keyboardType="ascii-capable"
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+      />
+      <PasswordValidationError>{error}</PasswordValidationError>
     </PasswordInputContainer>
   );
 };
