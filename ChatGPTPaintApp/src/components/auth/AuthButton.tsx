@@ -21,6 +21,6 @@ const AuthPressable = styled.TouchableOpacity`
   height: 46px;
   background-color: purple;
   border-radius: 10px;
-  margin-top: 16px;
+  margin-top: 20px;
 `;
 export default AuthButton;

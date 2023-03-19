@@ -14,9 +14,8 @@ const PasswordInput = () => {
 const PasswordInputContainer = styled.View`
   width: 80%;
   margin-top: ${() => {
-    return Platform.OS === 'ios' ? '40px' : '20px';
+    return Platform.OS === 'ios' ? '30px' : '20px';
   }};
-  margin-bottom: 20px;
 `;
 
 const PasswordTextInput = styled.TextInput`
