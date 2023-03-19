@@ -52,7 +52,7 @@ function App() {
           <Stack.Screen
             name="SignUp"
             component={SignUp}
-            options={{headerShown: false}}
+            options={{headerShown: false, presentation: 'modal'}}
           />
         </Stack.Navigator>
       )}

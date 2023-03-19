@@ -4,11 +4,12 @@ import {Text} from 'react-native';
 
 interface IAuthButtonProps {
   children: ReactNode;
+  onPress?: () => void;
 }
 
-const AuthButton = ({children}: IAuthButtonProps) => {
+const AuthButton = ({children, onPress}: IAuthButtonProps) => {
   return (
-    <AuthPressable>
+    <AuthPressable onPress={onPress}>
       <Text style={{color: 'white', fontWeight: 'bold'}}>{children}</Text>
     </AuthPressable>
   );
