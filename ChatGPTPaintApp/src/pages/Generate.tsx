@@ -2,7 +2,7 @@ import React from 'react';
 import GeneratePage from '../components/pages/GeneratePage';
 
 const Generate = () => {
-  return <GeneratePage></GeneratePage>;
+  return <GeneratePage />;
 };
 
 export default Generate;
