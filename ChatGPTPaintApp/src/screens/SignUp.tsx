@@ -4,6 +4,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 import {useSignUpMutation} from '../hooks/api/authApi';
 import {Alert} from 'react-native';
+import {useAppDispatch} from '../store';
+import {saveUserInfo} from '../thunks/encryptedStorageThunk';
 
 type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -14,6 +16,7 @@ export interface ISignUpForm {
 }
 
 const SignUp = ({navigation}: SignUpPageProps) => {
+  const dispatch = useAppDispatch();
   const [singUp, {isLoading, data, isError, error}] = useSignUpMutation();
 
   const onSubmit = useCallback(
@@ -33,6 +36,12 @@ const SignUp = ({navigation}: SignUpPageProps) => {
       Alert.alert('alert', errorMessage);
     }
   }, [isError, error]);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(saveUserInfo({email: data.email, uid: data.uid}));
+    }
+  }, [data, dispatch]);
 
   return (
     <SignUpScreen

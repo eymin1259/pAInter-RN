@@ -24,7 +24,9 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppInner = () => {
-  const isLoggedIn = useSelector((state: RootState) => !!state.user.uid);
+  const isLoggedIn = useSelector(
+    (state: RootState) => !!state.user.uid && !!state.user.email,
+  );
 
   return (
     <>

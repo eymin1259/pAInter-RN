@@ -4,6 +4,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 import {useSignInMutation} from '../hooks/api/authApi';
 import {Alert} from 'react-native';
+import {useAppDispatch} from '../store';
+import {saveUserInfo} from '../thunks/encryptedStorageThunk';
 
 type SignInPageProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
@@ -13,6 +15,7 @@ export type SignInForm = {
 };
 
 const SignIn = ({navigation}: SignInPageProps) => {
+  const dispatch = useAppDispatch();
   const [signIn, {isLoading, data, isError, error}] = useSignInMutation();
 
   const onSubmit = useCallback(
@@ -35,6 +38,12 @@ const SignIn = ({navigation}: SignInPageProps) => {
       Alert.alert('alert', errorMessage);
     }
   }, [isError, error]);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(saveUserInfo({email: data.email, uid: data.uid}));
+    }
+  }, [data, dispatch]);
 
   return (
     <SignInScreen
