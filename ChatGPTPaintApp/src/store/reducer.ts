@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {firebaseAuthApi} from '../api/authApi';
+import {firebaseAuthApi} from '../hooks/api/authApi';
 
 import userSlice from '../slices/userSlice';
 

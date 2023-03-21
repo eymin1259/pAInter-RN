@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
-import {firebaseAuthApi} from '../api/authApi';
+import {firebaseAuthApi} from '../hooks/api/authApi';
 import rootReducer from './reducer';
 
 const store = configureStore({

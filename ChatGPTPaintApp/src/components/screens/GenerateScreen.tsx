@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const EditPage = () => {
+const GenerateScreen = () => {
   return (
     <View>
-      <Text>이미지수정</Text>
+      <Text>이미지생성</Text>
     </View>
   );
 };
 
-export default EditPage;
+export default GenerateScreen;

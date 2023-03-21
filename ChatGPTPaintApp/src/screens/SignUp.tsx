@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
-import SignUpPage from '../components/pages/SignUpPage';
+import SignUpScreen from '../components/screens/SignUpScreen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
-import {useSignUpPostMutation} from '../api/authApi';
+import {useSignUpPostMutation} from '../hooks/api/authApi';
 
 type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
-export interface SignUpForm {
+export interface ISignUpForm {
   email: string;
   password: string;
   cfpassword: string;
@@ -17,7 +17,7 @@ const SignUp = ({navigation}: SignUpPageProps) => {
     useSignUpPostMutation();
 
   const onSubmit = useCallback(
-    (form: SignUpForm) => {
+    (form: ISignUpForm) => {
       console.log('SignUp');
       console.log(form);
       singUp({email: form.email, password: form.password});
@@ -29,7 +29,7 @@ const SignUp = ({navigation}: SignUpPageProps) => {
     navigation.pop();
   }, [navigation]);
 
-  return <SignUpPage gotoSignIn={gotoSignIn} onSubmit={onSubmit} />;
+  return <SignUpScreen gotoSignIn={gotoSignIn} onSubmit={onSubmit} />;
 };
 
 export default SignUp;
