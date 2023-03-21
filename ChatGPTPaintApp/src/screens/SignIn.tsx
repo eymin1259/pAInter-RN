@@ -5,7 +5,7 @@ import {RootStackParamList} from '../../AppInner';
 import {useSignInMutation} from '../hooks/api/authApi';
 import {Alert} from 'react-native';
 import {useAppDispatch} from '../store';
-import {saveUserInfo} from '../thunks/encryptedStorageThunk';
+import {saveUserIntoStorage} from '../thunks/encryptedStorageThunk';
 
 type SignInPageProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
@@ -41,7 +41,7 @@ const SignIn = ({navigation}: SignInPageProps) => {
 
   useEffect(() => {
     if (data) {
-      dispatch(saveUserInfo({email: data.email, uid: data.uid}));
+      dispatch(saveUserIntoStorage({email: data.email, uid: data.uid}));
     }
   }, [data, dispatch]);
 
