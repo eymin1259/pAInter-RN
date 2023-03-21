@@ -14,7 +14,44 @@ export const firebaseAuthApi = createApi({
   baseQuery: fakeBaseQuery(),
   tagTypes: ['Post'],
   endpoints: builder => ({
-    signUpPost: builder.mutation<IUserInfo, SignUpData>({
+    signIn: builder.mutation<IUserInfo, SignUpData>({
+      queryFn: async form => {
+        try {
+          const userCredential = await auth().signInWithEmailAndPassword(
+            form.email,
+            form.password,
+          );
+          return {
+            data: {
+              email: userCredential.user.email ?? '',
+              uid: userCredential.user.uid,
+            },
+          };
+        } catch (error: any) {
+          const errorCode = error.code as string;
+          let errorMsg = 'unknown error';
+          switch (errorCode) {
+            case 'auth/invalid-email':
+              errorMsg = 'the email address is not valid.';
+              break;
+            case 'auth/user-disabled':
+              errorMsg =
+                'the user corresponding to the given email has been disabled.';
+              break;
+            case 'auth/user-not-found':
+              errorMsg = 'there is no user corresponding to the given email.';
+              break;
+            case 'auth/wrong-password':
+              errorMsg = 'the password is invalid for the given email';
+              break;
+            default:
+              break;
+          }
+          return {error: errorMsg};
+        }
+      },
+    }),
+    signUp: builder.mutation<IUserInfo, SignUpData>({
       queryFn: async form => {
         try {
           const userCredential = await auth().createUserWithEmailAndPassword(
@@ -54,4 +91,4 @@ export const firebaseAuthApi = createApi({
   }),
 });
 
-export const {useSignUpPostMutation} = firebaseAuthApi;
+export const {useSignUpMutation, useSignInMutation} = firebaseAuthApi;

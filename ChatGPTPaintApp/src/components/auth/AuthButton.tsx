@@ -1,16 +1,21 @@
 import React, {ReactNode} from 'react';
 import styled from '@emotion/native';
-import {Text} from 'react-native';
+import {ActivityIndicator, Text} from 'react-native';
 
 interface IAuthButtonProps {
   children: ReactNode;
   onPress?: () => void;
+  isLoading?: boolean;
 }
 
-const AuthButton = ({children, onPress}: IAuthButtonProps) => {
+const AuthButton = ({children, onPress, isLoading}: IAuthButtonProps) => {
   return (
-    <AuthPressable onPress={onPress}>
-      <Text style={{color: 'white', fontWeight: 'bold'}}>{children}</Text>
+    <AuthPressable onPress={onPress} disabled={isLoading}>
+      {isLoading ? (
+        <ActivityIndicator color="white" />
+      ) : (
+        <Text style={{color: 'white', fontWeight: 'bold'}}>{children}</Text>
+      )}
     </AuthPressable>
   );
 };

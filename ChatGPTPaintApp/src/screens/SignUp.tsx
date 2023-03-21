@@ -1,8 +1,9 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import SignUpScreen from '../components/screens/SignUpScreen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
-import {useSignUpPostMutation} from '../hooks/api/authApi';
+import {useSignUpMutation} from '../hooks/api/authApi';
+import {Alert} from 'react-native';
 
 type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -13,13 +14,10 @@ export interface ISignUpForm {
 }
 
 const SignUp = ({navigation}: SignUpPageProps) => {
-  const [singUp, {isLoading, data: uid, isError, error}] =
-    useSignUpPostMutation();
+  const [singUp, {isLoading, data, isError, error}] = useSignUpMutation();
 
   const onSubmit = useCallback(
     (form: ISignUpForm) => {
-      console.log('SignUp');
-      console.log(form);
       singUp({email: form.email, password: form.password});
     },
     [singUp],
@@ -29,7 +27,20 @@ const SignUp = ({navigation}: SignUpPageProps) => {
     navigation.pop();
   }, [navigation]);
 
-  return <SignUpScreen gotoSignIn={gotoSignIn} onSubmit={onSubmit} />;
+  useEffect(() => {
+    if (error) {
+      const errorMessage = error as string;
+      Alert.alert('alert', errorMessage);
+    }
+  }, [isError, error]);
+
+  return (
+    <SignUpScreen
+      gotoSignIn={gotoSignIn}
+      onSubmit={onSubmit}
+      isLoading={isLoading}
+    />
+  );
 };
 
 export default SignUp;
