@@ -6,7 +6,7 @@ import Dialog from 'react-native-dialog';
 import auth from '@react-native-firebase/auth';
 import TextBoxButton from '../common/TextBoxButton';
 
-const MypageScreen = () => {
+const MyPageScreen = () => {
   const dispatch = useAppDispatch();
   const [visible, setVisible] = useState(false);
   const [inputPassword, setInputPassword] = useState('');
@@ -52,4 +52,4 @@ const MypageScreen = () => {
   );
 };
 
-export default MypageScreen;
+export default MyPageScreen;

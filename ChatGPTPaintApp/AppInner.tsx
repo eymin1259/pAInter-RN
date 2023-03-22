@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Mypage from './src/screens/Mypage';
+import MyPage from './src/screens/MyPage';
 import Generate from './src/screens/Generate';
 import Edit from './src/screens/Edit';
 import SignIn from './src/screens/SignIn';
@@ -46,9 +46,9 @@ const AppInner = () => {
           />
           <Tab.Screen name="Edit" component={Edit} options={{title: 'Edit'}} />
           <Tab.Screen
-            name="Mypage"
-            component={Mypage}
-            options={{title: 'Mypage'}}
+            name="MyPage"
+            component={MyPage}
+            options={{title: 'MyPage'}}
           />
         </Tab.Navigator>
       ) : (
