@@ -38,7 +38,7 @@ const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
               rules={{
                 required: {value: true, message: "email can't be blank"},
                 pattern: {
-                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                  value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                   message: 'invalid email address',
                 },
               }}
