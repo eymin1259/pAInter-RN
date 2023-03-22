@@ -1,8 +1,8 @@
 import React from 'react';
-import AuthTitle from '../auth/AuthTitle';
+import PurpleTitle from '../common/PurpleTitle';
 import EmailInput from '../auth/EmailInput';
 import PasswordInput from '../auth/PasswordInput';
-import AuthButton from '../auth/AuthButton';
+import PurpleButton from '../common/PurpleButton';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {Platform} from 'react-native';
@@ -31,7 +31,7 @@ const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
       <View style={styles.OutterContainer}>
         <KeyboardAwareScrollView>
           <View style={styles.InnerContainer}>
-            <AuthTitle>SignIn</AuthTitle>
+            <PurpleTitle>SignIn</PurpleTitle>
             <Controller
               control={control}
               name="email"
@@ -67,10 +67,12 @@ const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
                 />
               )}
             />
-            <AuthButton onPress={handleSubmit(onSubmit)} isLoading={isLoading}>
+            <PurpleButton
+              onPress={handleSubmit(onSubmit)}
+              isLoading={isLoading}>
               Confirm
-            </AuthButton>
-            <AuthButton onPress={gotoSignUp}>SignUp</AuthButton>
+            </PurpleButton>
+            <PurpleButton onPress={gotoSignUp}>SignUp</PurpleButton>
           </View>
         </KeyboardAwareScrollView>
       </View>
