@@ -14,7 +14,7 @@
     <string>Ionicons.ttf</string>
   </array>
 	<key>CFBundleDisplayName</key>
-	<string>pAInter</string>
+	<string>AIditor</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
