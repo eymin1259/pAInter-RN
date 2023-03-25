@@ -1,17 +1,17 @@
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {ImageVariationStackParamList} from '../../screens/ImageVariation';
+import {ImageVariationStackParamList} from '../../screens/ImageVariationScreen';
 
 type ImageVariationProps = NativeStackScreenProps<
   ImageVariationStackParamList,
   'ImageVariation'
 >;
 
-const ImageVariationScreen = ({navigation}: ImageVariationProps) => {
+const ImageVariation = ({navigation}: ImageVariationProps) => {
   return (
     <View>
-      <Text>Image Variation Screen</Text>
+      <Text>Image Variation</Text>
       <Pressable
         onPress={() => {
           navigation.navigate('ImageVariationResult');
@@ -22,4 +22,4 @@ const ImageVariationScreen = ({navigation}: ImageVariationProps) => {
   );
 };
 
-export default ImageVariationScreen;
+export default ImageVariation;

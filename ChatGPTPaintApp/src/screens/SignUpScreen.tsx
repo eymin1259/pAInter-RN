@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import SignUpScreen from '../components/screens/SignUpScreen';
+import SignUp from '../components/screens/SignUp';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 import {useSignUpMutation} from '../hooks/api/authApi';
@@ -7,7 +7,7 @@ import {Alert} from 'react-native';
 import {useAppDispatch} from '../store';
 import {saveUserIntoStorage} from '../thunks/encryptedStorageThunk';
 
-type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
+type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
 export interface ISignUpForm {
   email: string;
@@ -15,7 +15,7 @@ export interface ISignUpForm {
   cfpassword: string;
 }
 
-const SignUp = ({navigation}: SignUpPageProps) => {
+const SignUpScreen = ({navigation}: SignUpScreenProps) => {
   const dispatch = useAppDispatch();
   const [singUp, {isLoading, data, isError, error}] = useSignUpMutation();
 
@@ -44,12 +44,8 @@ const SignUp = ({navigation}: SignUpPageProps) => {
   }, [data, dispatch]);
 
   return (
-    <SignUpScreen
-      gotoSignIn={gotoSignIn}
-      onSubmit={onSubmit}
-      isLoading={isLoading}
-    />
+    <SignUp gotoSignIn={gotoSignIn} onSubmit={onSubmit} isLoading={isLoading} />
   );
 };
 
-export default SignUp;
+export default SignUpScreen;

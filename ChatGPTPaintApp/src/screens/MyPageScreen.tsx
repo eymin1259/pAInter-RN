@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import MyPageScreen from '../components/screens/MyPageScreen';
+import MyPage from '../components/screens/MyPage';
 import {useAppDispatch} from '../store';
 import auth from '@react-native-firebase/auth';
 import {removeUserFromStorage} from '../thunks/encryptedStorageThunk';
@@ -9,7 +9,7 @@ import {DialogResult} from '../thunks/dialogThunk';
 import {useDeleteUserMutation} from '../hooks/api/authApi';
 import {Alert} from 'react-native';
 
-const MyPage = () => {
+const MyPageScreen = () => {
   const dispatch = useAppDispatch();
   const {openDialog} = useDialog();
   const [deleteUser, {isLoading, data: deleteResult, isError, error}] =
@@ -45,7 +45,7 @@ const MyPage = () => {
 
   return (
     <>
-      <MyPageScreen
+      <MyPage
         handleSignOut={handleSignOut}
         hadleDeleteAccount={hadleDeleteAccount}
       />
@@ -58,4 +58,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default MyPageScreen;
