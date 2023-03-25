@@ -2,8 +2,8 @@ import React, {useEffect, useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyPage from './src/screens/MyPage';
-import Generate from './src/screens/Generate';
-import Edit from './src/screens/Edit';
+import ImageVariation from './src/screens/ImageVariation';
+import TextEdit from './src/screens/TextEdit';
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 import {useSelector} from 'react-redux';
@@ -49,11 +49,15 @@ const AppInner = () => {
       {isLoggedIn ? (
         <Tab.Navigator sceneContainerStyle={{backgroundColor: 'white'}}>
           <Tab.Screen
-            name="Generate"
-            component={Generate}
-            options={{title: 'Generate'}}
+            name="TextEdit"
+            component={TextEdit}
+            options={{title: 'Text Edit', headerShown: false}}
           />
-          <Tab.Screen name="Edit" component={Edit} options={{title: 'Edit'}} />
+          <Tab.Screen
+            name="ImageVariation"
+            component={ImageVariation}
+            options={{title: 'Image Variation', headerShown: false}}
+          />
           <Tab.Screen
             name="MyPage"
             component={MyPage}
