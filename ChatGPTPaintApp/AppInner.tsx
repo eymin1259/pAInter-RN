@@ -11,6 +11,7 @@ import {RootState} from './src/store/reducer';
 import {useAppDispatch} from './src/store';
 import {getUserFromStorage} from './src/thunks/encryptedStorageThunk';
 import SplashScreen from 'react-native-splash-screen';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export type LoggedInParamList = {
   Generate: undefined;
@@ -51,17 +52,37 @@ const AppInner = () => {
           <Tab.Screen
             name="TextEditTab"
             component={TextEditScreen}
-            options={{title: 'Text Edit', headerShown: false}}
+            options={{
+              title: 'Text Edit',
+              headerShown: false,
+              tabBarIcon: ({color}) => {
+                return <Ionicons name="pencil-sharp" size={20} color={color} />;
+              },
+              tabBarActiveTintColor: '#A700CF',
+            }}
           />
           <Tab.Screen
             name="ImageVariationTab"
             component={ImageVariationScreen}
-            options={{title: 'Image Variation', headerShown: false}}
+            options={{
+              title: 'Image Variation',
+              headerShown: false,
+              tabBarIcon: ({color}) => {
+                return <Ionicons name="image" size={20} color={color} />;
+              },
+              tabBarActiveTintColor: '#A700CF',
+            }}
           />
           <Tab.Screen
             name="MyPageTab"
             component={MyPageScreen}
-            options={{title: 'MyPage'}}
+            options={{
+              title: 'MyPage',
+              tabBarIcon: ({color}) => {
+                return <Ionicons name="person" size={20} color={color} />;
+              },
+              tabBarActiveTintColor: '#A700CF',
+            }}
           />
         </Tab.Navigator>
       ) : (
