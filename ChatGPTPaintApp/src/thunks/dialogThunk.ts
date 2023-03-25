@@ -8,7 +8,7 @@ export type DialogContents = {
   message: string;
 };
 
-type DialogResult = {
+export type DialogResult = {
   result: boolean;
   dialogInput: string;
 };

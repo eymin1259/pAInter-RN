@@ -5,7 +5,7 @@ const useDialog = () => {
   const dispatch = useAppDispatch();
 
   const openDialog = async (contents: DialogContents) => {
-    const {payload} = await await dispatch(openDialogThunkAction(contents));
+    const {payload} = await dispatch(openDialogThunkAction(contents));
     return payload;
   };
 
