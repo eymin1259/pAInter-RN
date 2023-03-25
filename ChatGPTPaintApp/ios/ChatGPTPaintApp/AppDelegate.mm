@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import "RNSplashScreen.h"
 #import <React/RCTBundleURLProvider.h>
 #import <Firebase.h>
 
@@ -12,7 +12,9 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   [FIRApp configure];
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  bool didFinish = [super application:application didFinishLaunchingWithOptions:launchOptions];
+  [RNSplashScreen show];
+  return didFinish;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
