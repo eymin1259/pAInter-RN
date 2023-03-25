@@ -1,6 +1,7 @@
 import {createApi, fakeBaseQuery} from '@reduxjs/toolkit/query/react';
-import auth from '@react-native-firebase/auth';
+import auth, {firebase} from '@react-native-firebase/auth';
 import {ISignUpForm} from '../../screens/SignUp';
+import {RootState} from '../../store/reducer';
 
 type SignUpData = Omit<ISignUpForm, 'cfpassword'>;
 
@@ -14,6 +15,32 @@ export const firebaseAuthApi = createApi({
   baseQuery: fakeBaseQuery(),
   tagTypes: ['Post'],
   endpoints: builder => ({
+    deleteUser: builder.mutation<boolean, string>({
+      queryFn: async (inputPassword, baseApi) => {
+        try {
+          const provider = firebase.auth.EmailAuthProvider;
+          const state = baseApi.getState() as RootState;
+          const authCredential = provider.credential(
+            state.user.email,
+            inputPassword,
+          );
+          const userCredentail =
+            await auth().currentUser?.reauthenticateWithCredential(
+              authCredential,
+            );
+          if (userCredentail) {
+            await userCredentail.user.delete();
+            return {data: true};
+          }
+          return {data: false};
+        } catch (error: any) {
+          let errorMsg = 'unknown error';
+          const errorCode = error.code as string;
+          errorMsg = errorCode;
+          return {error: errorMsg};
+        }
+      },
+    }),
     signIn: builder.mutation<IUserInfo, SignUpData>({
       queryFn: async form => {
         try {
@@ -91,4 +118,5 @@ export const firebaseAuthApi = createApi({
   }),
 });
 
-export const {useSignUpMutation, useSignInMutation} = firebaseAuthApi;
+export const {useSignUpMutation, useSignInMutation, useDeleteUserMutation} =
+  firebaseAuthApi;
