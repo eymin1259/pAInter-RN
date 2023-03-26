@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {LayoutChangeEvent} from 'react-native';
+import {Alert, LayoutChangeEvent} from 'react-native';
 import styled from '@emotion/native';
 import PreviewImage from '../common/PreviewImage';
 import PurpleButton from '../common/PurpleButton';
 import {useAppDispatch} from '../../store';
 import {resetPhotoInfo} from '../../slices/photoSlice';
+import {usePostPhotoMutation} from '../../hooks/api/usePhotoPost';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/reducer';
 
 const ImageVariationResult = () => {
   const dispatch = useAppDispatch();
@@ -12,6 +15,13 @@ const ImageVariationResult = () => {
     width: 0,
     height: 0,
   });
+
+  const selectedImage = useSelector(
+    (state: RootState) => state.photo.imageInfo,
+  );
+
+  const [postPhoto, {data: resultUri, isLoading, isError, error}] =
+    usePostPhotoMutation();
 
   const onLayout = (event: LayoutChangeEvent) => {
     const {height, width} = event.nativeEvent.layout;
@@ -25,18 +35,29 @@ const ImageVariationResult = () => {
     dispatch(resetPhotoInfo());
   }, [dispatch]);
 
+  useEffect(() => {
+    postPhoto(selectedImage);
+  }, []);
+
+  useEffect(() => {
+    if (isError) {
+      const errorMessage = error as string;
+      Alert.alert('alert', errorMessage);
+    }
+  }, [isError, error]);
+
   return (
     <ImageVariationResultLayout onLayout={onLayout}>
       <VariationResultContent height={parentLayout.height - 100}>
         <PreviewImage
           imageSize={parentLayout.width * 0.8}
-          isLoading={true}
-          imageUri=""
+          isLoading={isLoading}
+          imageUri={resultUri ?? ''}
         />
       </VariationResultContent>
       <PurpleButton
         fontSize="20px"
-        isLoading={true}
+        isLoading={isLoading}
         onPress={() => {
           console.log('save photo ');
         }}>

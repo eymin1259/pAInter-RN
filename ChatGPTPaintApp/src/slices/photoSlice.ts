@@ -1,9 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {ImageForm} from '../hooks/api/usePhotoPost';
 
-const initialState = {
-  imageName: '',
-  imageUri: '',
-  imageType: '',
+const initialState: {imageInfo: ImageForm; previewUri: string} = {
+  imageInfo: {
+    name: '',
+    uri: '',
+    type: '',
+  },
   previewUri: '',
 };
 
@@ -15,14 +18,18 @@ const photoSlice = createSlice({
       state.previewUri = action.payload.uri;
     },
     setImageInfo: (state, action) => {
-      state.imageName = action.payload.name;
-      state.imageUri = action.payload.uri;
-      state.imageType = action.payload.type;
+      state.imageInfo = {
+        name: action.payload.name,
+        uri: action.payload.uri,
+        type: action.payload.type,
+      };
     },
     resetPhotoInfo: state => {
-      state.imageName = '';
-      state.imageUri = '';
-      state.imageType = '';
+      state.imageInfo = {
+        name: '',
+        uri: '',
+        type: '',
+      };
       state.previewUri = '';
     },
   },
