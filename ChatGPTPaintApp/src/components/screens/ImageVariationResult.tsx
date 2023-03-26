@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {LayoutChangeEvent} from 'react-native';
 import styled from '@emotion/native';
 import PreviewImage from '../common/PreviewImage';
 import PurpleButton from '../common/PurpleButton';
+import {useAppDispatch} from '../../store';
+import {resetPhotoInfo} from '../../slices/photoSlice';
 
 const ImageVariationResult = () => {
+  const dispatch = useAppDispatch();
   const [parentLayout, setParentLayout] = useState({
     width: 0,
     height: 0,
@@ -17,6 +20,11 @@ const ImageVariationResult = () => {
       height,
     });
   };
+
+  useEffect(() => {
+    dispatch(resetPhotoInfo());
+  }, [dispatch]);
+
   return (
     <ImageVariationResultLayout onLayout={onLayout}>
       <VariationResultContent height={parentLayout.height - 100}>

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {LayoutChangeEvent} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {Alert, LayoutChangeEvent} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {ImageVariationStackParamList} from '../../screens/ImageVariationScreen';
 import styled from '@emotion/native';
@@ -39,6 +39,14 @@ const ImageVariation = ({navigation}: ImageVariationProps) => {
     dispatch(resetPhotoInfo());
   }, [dispatch]);
 
+  const onClickVariation = useCallback(() => {
+    if (previewSrc === '') {
+      Alert.alert('Please upload a photo.');
+      return;
+    }
+    navigation.navigate('ImageVariationResult');
+  }, [previewSrc, navigation]);
+
   return (
     <ImageVariationLayout onLayout={onLayout}>
       <ImageVariationContent height={parentLayout.height - 80}>
@@ -54,11 +62,7 @@ const ImageVariation = ({navigation}: ImageVariationProps) => {
           imageUri={previewSrc}
         />
       </ImageVariationContent>
-      <PurpleButton
-        fontSize="20px"
-        onPress={() => {
-          navigation.navigate('ImageVariationResult');
-        }}>
+      <PurpleButton fontSize="20px" onPress={onClickVariation}>
         Variation
       </PurpleButton>
     </ImageVariationLayout>
