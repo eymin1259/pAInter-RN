@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Alert, LayoutChangeEvent} from 'react-native';
 import styled from '@emotion/native';
 import PreviewImage from '../common/PreviewImage';
@@ -8,6 +8,8 @@ import {resetPhotoInfo} from '../../slices/photoSlice';
 import {usePostPhotoMutation} from '../../hooks/api/usePhotoPost';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/reducer';
+import ViewShot from 'react-native-view-shot';
+import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
 const ImageVariationResult = () => {
   const dispatch = useAppDispatch();
@@ -15,11 +17,11 @@ const ImageVariationResult = () => {
     width: 0,
     height: 0,
   });
-
+  const imageRef = useRef(null);
   const selectedImage = useSelector(
     (state: RootState) => state.photo.imageInfo,
   );
-
+  const [saveLoading, setSaveLoading] = useState(false);
   const [postPhoto, {data: resultUri, isLoading, isError, error}] =
     usePostPhotoMutation();
 
@@ -46,21 +48,40 @@ const ImageVariationResult = () => {
     }
   }, [isError, error]);
 
+  const onClickSaveImage = useCallback(async () => {
+    if (saveLoading) {
+      return;
+    }
+    setSaveLoading(true);
+    const captureUri = await imageRef.current.capture();
+    await CameraRoll.save(captureUri, {
+      type: 'photo',
+    });
+    setSaveLoading(false);
+    Alert.alert('The photo has been saved');
+  }, [imageRef, saveLoading]);
+
   return (
     <ImageVariationResultLayout onLayout={onLayout}>
       <VariationResultContent height={parentLayout.height - 100}>
-        <PreviewImage
-          imageSize={parentLayout.width * 0.8}
-          isLoading={isLoading}
-          imageUri={resultUri ?? ''}
-        />
+        <ViewShot
+          ref={imageRef}
+          options={{
+            fileName: `${selectedImage.name}-variation`,
+            format: 'png',
+            quality: 1,
+          }}>
+          <PreviewImage
+            imageSize={parentLayout.width * 0.8}
+            isLoading={isLoading}
+            imageUri={resultUri ?? ''}
+          />
+        </ViewShot>
       </VariationResultContent>
       <PurpleButton
         fontSize="20px"
-        isLoading={isLoading}
-        onPress={() => {
-          console.log('save photo ');
-        }}>
+        isLoading={isLoading || saveLoading}
+        onPress={onClickSaveImage}>
         save !
       </PurpleButton>
     </ImageVariationResultLayout>
