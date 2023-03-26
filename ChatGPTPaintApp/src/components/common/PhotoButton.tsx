@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/native';
-import {Text} from 'react-native';
 
 type PhotoResource = 'camera' | 'gallery';
 
@@ -19,7 +18,7 @@ const PhotoButton = ({resource}: PhotoButtonProps) => {
 
   return (
     <PurplePressable onPress={onPress}>
-      <Text style={{color: 'white', fontWeight: 'bold'}}>{resource}</Text>
+      <ResourceText>{resource}</ResourceText>
     </PurplePressable>
   );
 };
@@ -27,9 +26,16 @@ const PhotoButton = ({resource}: PhotoButtonProps) => {
 const PurplePressable = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 40%;
   height: 46px;
   background-color: purple;
-  border-radius: 10px;
+  border-radius: 20px;
 `;
+
+const ResourceText = styled.Text`
+  color: white;
+  font-weight: bold;
+  font-size: 17px;
+`;
+
 export default PhotoButton;
