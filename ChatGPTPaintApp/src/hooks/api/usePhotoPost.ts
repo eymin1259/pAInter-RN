@@ -49,12 +49,14 @@ export const postPhotoApi = createApi({
             data: response.data.data[0].url,
           };
         } catch (err: any) {
-          console.log(err);
-          console.debug(err);
-          console.debug(err);
-
+          let errorMessage: 'unknown error';
+          if (axios.isAxiosError(err)) {
+            errorMessage = err.response?.data.error.message;
+          } else {
+            errorMessage = err.message;
+          }
           return {
-            error: err.message,
+            error: errorMessage,
           };
         }
       },
