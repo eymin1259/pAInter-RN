@@ -10,8 +10,8 @@ export interface IUserInfo {
   uid: string;
 }
 
-export const firebaseAuthApi = createApi({
-  reducerPath: 'firebaseAuthApi',
+export const useFirebaseAuth = createApi({
+  reducerPath: 'useFirebaseAuth',
   baseQuery: fakeBaseQuery(),
   tagTypes: ['Post'],
   endpoints: builder => ({
@@ -119,4 +119,4 @@ export const firebaseAuthApi = createApi({
 });
 
 export const {useSignUpMutation, useSignInMutation, useDeleteUserMutation} =
-  firebaseAuthApi;
+  useFirebaseAuth;

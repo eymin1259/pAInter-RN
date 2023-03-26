@@ -2,7 +2,7 @@ import React, {useCallback, useEffect} from 'react';
 import SignIn from '../components/screens/SignIn';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
-import {useSignInMutation} from '../hooks/api/authApi';
+import {useSignInMutation} from '../hooks/api/useFirebaseAuth';
 import {Alert} from 'react-native';
 import {useAppDispatch} from '../store';
 import {saveUserIntoStorage} from '../thunks/encryptedStorageThunk';

@@ -1,12 +1,12 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
-import {firebaseAuthApi} from '../hooks/api/authApi';
+import {useFirebaseAuth} from '../hooks/api/useFirebaseAuth';
 import rootReducer from './reducer';
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(firebaseAuthApi.middleware),
+    getDefaultMiddleware().concat(useFirebaseAuth.middleware),
 });
 export default store;
 
