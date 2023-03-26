@@ -12,6 +12,7 @@ import {useAppDispatch} from './src/store';
 import {getUserFromStorage} from './src/thunks/encryptedStorageThunk';
 import SplashScreen from 'react-native-splash-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import usePermissions from './src/hooks/usePermissions';
 
 export type LoggedInParamList = {
   Generate: undefined;
@@ -34,6 +35,8 @@ const AppInner = () => {
   const isLoggedIn = useMemo(() => {
     return !!uid && !!email;
   }, [uid, email]);
+
+  usePermissions();
 
   useEffect(() => {
     dispatch(getUserFromStorage());
