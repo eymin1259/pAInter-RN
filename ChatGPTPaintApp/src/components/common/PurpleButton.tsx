@@ -1,20 +1,26 @@
 import React, {ReactNode} from 'react';
 import styled from '@emotion/native';
-import {ActivityIndicator, Text} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 
 interface IPurpleButtonProps {
   children: ReactNode;
   onPress?: () => void;
   isLoading?: boolean;
+  fontSize?: string;
 }
 
-const PurpleButton = ({children, onPress, isLoading}: IPurpleButtonProps) => {
+const PurpleButton = ({
+  children,
+  onPress,
+  isLoading,
+  fontSize,
+}: IPurpleButtonProps) => {
   return (
     <PurplePressable onPress={onPress} disabled={isLoading}>
       {isLoading ? (
         <ActivityIndicator color="white" />
       ) : (
-        <Text style={{color: 'white', fontWeight: 'bold'}}>{children}</Text>
+        <ButtonText fontSize={fontSize}>{children}</ButtonText>
       )}
     </PurplePressable>
   );
@@ -26,7 +32,19 @@ const PurplePressable = styled.TouchableOpacity`
   width: 80%;
   height: 46px;
   background-color: purple;
-  border-radius: 10px;
+  border-radius: 20px;
   margin-top: 20px;
 `;
+
+interface BoxTextProps {
+  fontSize?: string;
+}
+
+const ButtonText = styled.Text`
+  color: white;
+  font-weight: bold;
+  font-size: ${(props: BoxTextProps) =>
+    props.fontSize ? props.fontSize : '15px'};
+`;
+
 export default PurpleButton;
