@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {ImageForm} from '../hooks/api/usePhotoPost';
+import {ImageForm} from '../hooks/api/useVaryImage';
 
 const initialState: {imageInfo: ImageForm; previewUri: string} = {
   imageInfo: {

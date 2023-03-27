@@ -2,7 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import {useFirebaseAuth} from '../hooks/api/useFirebaseAuth';
 import {generateImageApi} from '../hooks/api/useGenerateImage';
-import {postPhotoApi} from '../hooks/api/usePhotoPost';
+import {varyImageApi} from '../hooks/api/useVaryImage';
 import rootReducer from './reducer';
 
 const store = configureStore({
@@ -10,7 +10,7 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
       .concat(useFirebaseAuth.middleware)
-      .concat(postPhotoApi.middleware)
+      .concat(varyImageApi.middleware)
       .concat(generateImageApi.middleware),
 });
 export default store;

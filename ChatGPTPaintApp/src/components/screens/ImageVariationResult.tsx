@@ -5,7 +5,7 @@ import PreviewImage from '../common/PreviewImage';
 import PurpleButton from '../common/PurpleButton';
 import {useAppDispatch} from '../../store';
 import {resetPhotoInfo} from '../../slices/photoSlice';
-import {usePostPhotoMutation} from '../../hooks/api/usePhotoPost';
+import {useVaryImageMutation} from '../../hooks/api/useVaryImage';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/reducer';
 import ViewShot from 'react-native-view-shot';
@@ -22,8 +22,8 @@ const ImageVariationResult = () => {
     (state: RootState) => state.photo.imageInfo,
   );
   const [saveLoading, setSaveLoading] = useState(false);
-  const [postPhoto, {data: resultUri, isLoading, isError, error}] =
-    usePostPhotoMutation();
+  const [varyImage, {data: resultUri, isLoading, isError, error}] =
+    useVaryImageMutation();
 
   const onLayout = (event: LayoutChangeEvent) => {
     const {height, width} = event.nativeEvent.layout;
@@ -38,7 +38,7 @@ const ImageVariationResult = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    postPhoto(selectedImage);
+    varyImage(selectedImage);
   }, []);
 
   useEffect(() => {
