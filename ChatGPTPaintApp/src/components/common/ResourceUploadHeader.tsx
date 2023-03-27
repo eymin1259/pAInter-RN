@@ -13,7 +13,7 @@ interface ResourceUploadHeaderProps {
 
 const ResourceUploadHeader = (props: ResourceUploadHeaderProps) => {
   return (
-    <ResourceUploadHeaderLayour>
+    <ResourceUploadHeaderLayout>
       <Title
         textColor={props.titleColor}
         fontSize={props.fontSize}
@@ -25,11 +25,11 @@ const ResourceUploadHeader = (props: ResourceUploadHeaderProps) => {
         <PhotoButton resource="camera" />
         <PhotoButton resource="gallery" />
       </ButtonContainer>
-    </ResourceUploadHeaderLayour>
+    </ResourceUploadHeaderLayout>
   );
 };
 
-const ResourceUploadHeaderLayour = styled.View`
+const ResourceUploadHeaderLayout = styled.View`
   display: flex;
   flex-direction: column;
   justify-content: center;
