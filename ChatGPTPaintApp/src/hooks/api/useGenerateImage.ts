@@ -12,7 +12,7 @@ export const generateImageApi = createApi({
         try {
           const response = await axios.post<ImageResponse>(
             'https://api.openai.com/v1/images/generations',
-            {prompt: prompt, n: 1, size: '512x512'},
+            {prompt: prompt, n: 1, size: '256x256'},
             {
               withCredentials: true,
               headers: {

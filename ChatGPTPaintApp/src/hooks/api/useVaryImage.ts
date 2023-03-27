@@ -25,7 +25,7 @@ export const varyImageApi = createApi({
         const formData = new FormData();
         formData.append('image', form);
         formData.append('n', 1);
-        formData.append('size', '512x512');
+        formData.append('size', '256x256');
         try {
           const response = await axios.post<ImageResponse>(
             'https://api.openai.com/v1/images/variations',

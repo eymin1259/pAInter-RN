@@ -21,8 +21,8 @@ const PhotoButton = ({resource}: PhotoButtonProps) => {
       );
       return ImageResizer.createResizedImage(
         response.path,
-        512,
-        512,
+        256,
+        256,
         'PNG',
         70,
         0,
