@@ -49,7 +49,7 @@ const ImageGenerate = () => {
   }, [isError, error]);
 
   const onClickSaveImage = useCallback(async () => {
-    if (saveLoading) {
+    if (saveLoading || imageRef.current === null) {
       return;
     }
     setSaveLoading(true);
