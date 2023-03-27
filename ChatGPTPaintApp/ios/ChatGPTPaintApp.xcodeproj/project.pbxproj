@@ -511,6 +511,7 @@
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ChatGPTPaintApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,6 +539,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YB8GA5MLV5;
 				INFOPLIST_FILE = ChatGPTPaintApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

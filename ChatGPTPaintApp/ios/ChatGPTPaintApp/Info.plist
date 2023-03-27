@@ -2,17 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>UIApplicationSceneManifest</key>
-  <dict>
-      <key>UISceneConfigurations</key>
-      <dict/>
-  </dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-  <key>UIAppFonts</key>
-  <array>
-    <string>Ionicons.ttf</string>
-  </array>
 	<key>CFBundleDisplayName</key>
 	<string>AIditor</string>
 	<key>CFBundleExecutable</key>
@@ -31,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>CodePushDeploymentKey</key>
+	<string>Yp1PDIpVuSm611MUU1It0-V4MBlxDRTkdUHBR</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -44,16 +37,23 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera permission is required to upload photos or text for editing.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Library permission is required to upload photos or text for editing.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Library permission is required to upload photos or text for editing.</string>
-  <key>CodePushDeploymentKey</key>
-  <string>Yp1PDIpVuSm611MUU1It0-V4MBlxDRTkdUHBR</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ionicons.ttf</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -63,8 +63,12 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
