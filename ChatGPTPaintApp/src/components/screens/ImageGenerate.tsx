@@ -3,10 +3,10 @@ import {Alert, LayoutChangeEvent, Keyboard} from 'react-native';
 import styled from '@emotion/native';
 import PurpleButton from '../common/PurpleButton';
 import PreviewImage from '../common/PreviewImage';
-import {useGenerateImageMutation} from '../../hooks/api/useGenerateImage';
 import ViewShot from 'react-native-view-shot';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import PromptHeader from '../common/PromptHeader';
+import {useImageGeneratioMutation} from '../../hooks/api/useImageGenerationMutation';
 
 const ImageGenerate = () => {
   const [parentLayout, setParentLayout] = useState({
@@ -14,8 +14,9 @@ const ImageGenerate = () => {
     height: 0,
   });
   const [prompt, setPropmt] = useState('');
-  const [generateImage, {data: resultUri, isLoading, isError, error}] =
-    useGenerateImageMutation();
+  const [generateImage, {data, isLoading, isError, error}] =
+    useImageGeneratioMutation();
+
   const [saveLoading, setSaveLoading] = useState(false);
   const imageRef = useRef(null);
 
@@ -73,11 +74,11 @@ const ImageGenerate = () => {
         }}>
         <PreviewImage
           imageSize={parentLayout.width * 0.8}
-          imageUri={resultUri ?? ''}
+          imageUri={data?.url ?? ''}
           isLoading={isLoading}
         />
       </ViewShot>
-      {resultUri && (
+      {data?.url && (
         <PurpleButton
           isLoading={isLoading || saveLoading}
           onPress={onClickSaveImage}

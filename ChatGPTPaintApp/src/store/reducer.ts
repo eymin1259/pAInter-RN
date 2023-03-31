@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import {useFirebaseAuth} from '../hooks/api/useFirebaseAuth';
-import {generateImageApi} from '../hooks/api/useGenerateImage';
-import {varyImageApi} from '../hooks/api/useVaryImage';
+import {imageGenerationApi} from '../hooks/api/useImageGenerationMutation';
+import {imageVariationApi} from '../hooks/api/useImageVariationMutation';
 import dialogSlice from '../slices/dialogSlice';
 import photoSlice from '../slices/photoSlice';
 import userSlice from '../slices/userSlice';
@@ -11,8 +11,8 @@ const rootReducer = combineReducers({
   dialog: dialogSlice.reducer,
   photo: photoSlice.reducer,
   [useFirebaseAuth.reducerPath]: useFirebaseAuth.reducer,
-  [varyImageApi.reducerPath]: varyImageApi.reducer,
-  [generateImageApi.reducerPath]: generateImageApi.reducer,
+  [imageVariationApi.reducerPath]: imageVariationApi.reducer,
+  [imageGenerationApi.reducerPath]: imageGenerationApi.reducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
