@@ -9,12 +9,9 @@ const AuthTitle = ({children}: IAuthTitleProps) => {
 };
 
 const AuthTitleText = styled.Text`
-  font-size: 30;
+  font-size: 30px;
   color: purple;
   font-weight: bold;
-  font-family: 'BMJUA';
-
-  margin-bottom: 10px;
 `;
 
 export default AuthTitle;
