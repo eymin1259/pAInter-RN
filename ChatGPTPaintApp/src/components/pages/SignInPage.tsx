@@ -7,7 +7,11 @@ import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {Platform} from 'react-native';
 
-const SignInPage = () => {
+interface ISignInPageProps {
+  gotoSignUp: () => void;
+}
+
+const SignInPage = (props: ISignInPageProps) => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.OutterContainer}>
@@ -17,7 +21,7 @@ const SignInPage = () => {
             <EmailInput />
             <PasswordInput />
             <AuthButton>Confirm</AuthButton>
-            <AuthButton>SignUp</AuthButton>
+            <AuthButton onPress={props.gotoSignUp}>SignUp</AuthButton>
           </View>
         </KeyboardAwareScrollView>
       </View>
