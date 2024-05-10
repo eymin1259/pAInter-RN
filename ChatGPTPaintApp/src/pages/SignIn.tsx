@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import SignInPage from '../components/pages/SignInPage';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import {RootStackParamList} from '../../AppInner';
 
 type SignInPageProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 

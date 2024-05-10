@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import SignUpPage from '../components/pages/SignUpPage';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import {RootStackParamList} from '../../AppInner';
 
 type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
