@@ -54,8 +54,8 @@ const SignInPage = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
               rules={{
                 required: {value: true, message: "password can't be blank"},
                 minLength: {
-                  value: 4,
-                  message: 'minimum is 4 characters',
+                  value: 6,
+                  message: 'minimum is 6 characters',
                 },
               }}
               render={({field: {onChange}}) => (
