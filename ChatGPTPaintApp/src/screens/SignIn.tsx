@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import SignInPage from '../components/pages/SignInPage';
+import SignInScreen from '../components/screens/SignInScreen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 
@@ -20,7 +20,7 @@ const SignIn = ({navigation}: SignInPageProps) => {
     navigation.navigate('SignUp');
   }, [navigation]);
 
-  return <SignInPage gotoSignUp={gotoSignUp} onSubmit={onSubmit} />;
+  return <SignInScreen gotoSignUp={gotoSignUp} onSubmit={onSubmit} />;
 };
 
 export default SignIn;

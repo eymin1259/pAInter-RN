@@ -6,15 +6,15 @@ import AuthButton from '../auth/AuthButton';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {Platform} from 'react-native';
-import {SignInForm} from '../../pages/SignIn';
 import {useForm, Controller} from 'react-hook-form';
+import {ISignUpForm} from '../../screens/SignUp';
 
-interface ISignInPageProps {
-  gotoSignUp: () => void;
-  onSubmit: (data: SignInForm) => void;
+interface ISignUpPageProps {
+  gotoSignIn: () => void;
+  onSubmit: (data: ISignUpForm) => void;
 }
 
-const SignInPage = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
+const SignUpScreen = ({gotoSignIn, onSubmit}: ISignUpPageProps) => {
   const {
     control,
     handleSubmit,
@@ -23,6 +23,7 @@ const SignInPage = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
     defaultValues: {
       email: '',
       password: '',
+      cfpassword: '',
     },
   });
   return (
@@ -30,7 +31,7 @@ const SignInPage = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
       <View style={styles.OutterContainer}>
         <KeyboardAwareScrollView>
           <View style={styles.InnerContainer}>
-            <AuthTitle>SignIn</AuthTitle>
+            <AuthTitle>SignUp</AuthTitle>
             <Controller
               control={control}
               name="email"
@@ -66,8 +67,26 @@ const SignInPage = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
                 />
               )}
             />
+            <Controller
+              control={control}
+              name="cfpassword"
+              rules={{
+                validate: (val, formVal) => {
+                  return val === formVal.password;
+                },
+              }}
+              render={({field: {onChange}}) => (
+                <PasswordInput
+                  onChangeText={onChange}
+                  error={
+                    errors.cfpassword === undefined ? '' : 'password mismatch'
+                  }
+                  placeholder="confirm password"
+                />
+              )}
+            />
             <AuthButton onPress={handleSubmit(onSubmit)}>Confirm</AuthButton>
-            <AuthButton onPress={gotoSignUp}>SignUp</AuthButton>
+            <AuthButton onPress={gotoSignIn}>SignIn</AuthButton>
           </View>
         </KeyboardAwareScrollView>
       </View>
@@ -96,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInPage;
+export default SignUpScreen;

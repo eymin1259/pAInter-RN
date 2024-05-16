@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Profile from './src/pages/Profile';
-import Generate from './src/pages/Generate';
-import Edit from './src/pages/Edit';
-import SignIn from './src/pages/SignIn';
-import SignUp from './src/pages/SignUp';
+import Profile from './src/screens/Setting';
+import Generate from './src/screens/Generate';
+import Edit from './src/screens/Edit';
+import SignIn from './src/screens/SignIn';
+import SignUp from './src/screens/SignUp';
 import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducer';
 

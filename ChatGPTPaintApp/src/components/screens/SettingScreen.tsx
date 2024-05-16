@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const GeneratePage = () => {
+const SettingScreen = () => {
   return (
     <View>
-      <Text>이미지생성</Text>
+      <Text>setting</Text>
     </View>
   );
 };
 
-export default GeneratePage;
+export default SettingScreen;

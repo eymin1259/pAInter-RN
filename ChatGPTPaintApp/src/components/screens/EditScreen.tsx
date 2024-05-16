@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const ProfilePage = () => {
+const EditScreen = () => {
   return (
     <View>
-      <Text>프로필</Text>
+      <Text>이미지수정</Text>
     </View>
   );
 };
 
-export default ProfilePage;
+export default EditScreen;
