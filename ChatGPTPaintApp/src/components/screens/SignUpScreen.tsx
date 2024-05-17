@@ -5,16 +5,16 @@ import PasswordInput from '../auth/PasswordInput';
 import AuthButton from '../auth/AuthButton';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-import {Platform} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {ISignUpForm} from '../../screens/SignUp';
 
 interface ISignUpPageProps {
   gotoSignIn: () => void;
   onSubmit: (data: ISignUpForm) => void;
+  isLoading: boolean;
 }
 
-const SignUpScreen = ({gotoSignIn, onSubmit}: ISignUpPageProps) => {
+const SignUpScreen = ({gotoSignIn, onSubmit, isLoading}: ISignUpPageProps) => {
   const {
     control,
     handleSubmit,
@@ -85,7 +85,9 @@ const SignUpScreen = ({gotoSignIn, onSubmit}: ISignUpPageProps) => {
                 />
               )}
             />
-            <AuthButton onPress={handleSubmit(onSubmit)}>Confirm</AuthButton>
+            <AuthButton onPress={handleSubmit(onSubmit)} isLoading={isLoading}>
+              Confirm
+            </AuthButton>
             <AuthButton onPress={gotoSignIn}>SignIn</AuthButton>
           </View>
         </KeyboardAwareScrollView>
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   OutterContainer: {
     width: '100%',
-    height: `${Platform.OS === 'ios' ? '60%' : '66%'}`,
+    height: '70%',
   },
   InnerContainer: {
     display: 'flex',

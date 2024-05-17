@@ -12,9 +12,10 @@ import {useForm, Controller} from 'react-hook-form';
 interface ISignInPageProps {
   gotoSignUp: () => void;
   onSubmit: (data: SignInForm) => void;
+  isLoading: boolean;
 }
 
-const SignInScreen = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
+const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
   const {
     control,
     handleSubmit,
@@ -66,7 +67,9 @@ const SignInScreen = ({gotoSignUp, onSubmit}: ISignInPageProps) => {
                 />
               )}
             />
-            <AuthButton onPress={handleSubmit(onSubmit)}>Confirm</AuthButton>
+            <AuthButton onPress={handleSubmit(onSubmit)} isLoading={isLoading}>
+              Confirm
+            </AuthButton>
             <AuthButton onPress={gotoSignUp}>SignUp</AuthButton>
           </View>
         </KeyboardAwareScrollView>
