@@ -10,3 +10,11 @@ export const saveUserInfo = createAsyncThunk<IUserInfo, IUserInfo>(
     return userinfo;
   },
 );
+
+export const removeUserInfo = createAsyncThunk<void, void>(
+  'encryptedStorageThunk/removeUserInfo',
+  async () => {
+    await EncryptedStorage.removeItem('email');
+    await EncryptedStorage.removeItem('uid');
+  },
+);
