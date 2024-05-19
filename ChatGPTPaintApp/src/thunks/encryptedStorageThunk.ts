@@ -2,7 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import {IUserInfo} from '../hooks/api/authApi';
 
-export const saveUserInfo = createAsyncThunk<IUserInfo, IUserInfo>(
+export const saveUserIntoStorage = createAsyncThunk<IUserInfo, IUserInfo>(
   'encryptedStorageThunk/saveUserInfo',
   async userinfo => {
     await EncryptedStorage.setItem('email', userinfo.email);
@@ -11,7 +11,7 @@ export const saveUserInfo = createAsyncThunk<IUserInfo, IUserInfo>(
   },
 );
 
-export const removeUserInfo = createAsyncThunk<void, void>(
+export const removeUserFromStorage = createAsyncThunk<void, void>(
   'encryptedStorageThunk/removeUserInfo',
   async () => {
     await EncryptedStorage.removeItem('email');

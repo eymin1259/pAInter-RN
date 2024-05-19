@@ -1,5 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {saveUserInfo, removeUserInfo} from '../thunks/encryptedStorageThunk';
+import {
+  saveUserIntoStorage,
+  removeUserFromStorage,
+} from '../thunks/encryptedStorageThunk';
 
 const initialState = {
   email: '',
@@ -15,15 +18,15 @@ const userSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(saveUserInfo.fulfilled, (state, {payload}) => {
+    builder.addCase(saveUserIntoStorage.fulfilled, (state, {payload}) => {
       state.email = payload.email;
       state.uid = payload.uid;
     });
-    builder.addCase(saveUserInfo.rejected, state => {
+    builder.addCase(saveUserIntoStorage.rejected, state => {
       state.email = '';
       state.uid = '';
     });
-    builder.addCase(removeUserInfo.fulfilled, state => {
+    builder.addCase(removeUserFromStorage.fulfilled, state => {
       state.email = '';
       state.uid = '';
     });

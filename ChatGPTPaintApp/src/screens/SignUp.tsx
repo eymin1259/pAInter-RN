@@ -5,7 +5,7 @@ import {RootStackParamList} from '../../AppInner';
 import {useSignUpMutation} from '../hooks/api/authApi';
 import {Alert} from 'react-native';
 import {useAppDispatch} from '../store';
-import {saveUserInfo} from '../thunks/encryptedStorageThunk';
+import {saveUserIntoStorage} from '../thunks/encryptedStorageThunk';
 
 type SignUpPageProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -39,7 +39,7 @@ const SignUp = ({navigation}: SignUpPageProps) => {
 
   useEffect(() => {
     if (data) {
-      dispatch(saveUserInfo({email: data.email, uid: data.uid}));
+      dispatch(saveUserIntoStorage({email: data.email, uid: data.uid}));
     }
   }, [data, dispatch]);
 

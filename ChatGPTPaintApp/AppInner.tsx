@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Profile from './src/screens/Setting';
+import Setting from './src/screens/Setting';
 import Generate from './src/screens/Generate';
 import Edit from './src/screens/Edit';
 import SignIn from './src/screens/SignIn';
@@ -39,9 +39,9 @@ const AppInner = () => {
           />
           <Tab.Screen name="Edit" component={Edit} options={{title: 'Edit'}} />
           <Tab.Screen
-            name="Profile"
-            component={Profile}
-            options={{title: 'Profile'}}
+            name="Setting"
+            component={Setting}
+            options={{title: 'Setting'}}
           />
         </Tab.Navigator>
       ) : (
