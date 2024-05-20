@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Setting from './src/screens/Setting';
@@ -8,6 +8,8 @@ import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
 import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducer';
+import {useAppDispatch} from './src/store';
+import {getUserFromStorage} from './src/thunks/encryptedStorageThunk';
 
 export type LoggedInParamList = {
   Generate: undefined;
@@ -24,9 +26,14 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppInner = () => {
+  const dispatch = useAppDispatch();
   const isLoggedIn = useSelector(
     (state: RootState) => !!state.user.uid && !!state.user.email,
   );
+
+  useEffect(() => {
+    dispatch(getUserFromStorage());
+  }, [dispatch]);
 
   return (
     <>

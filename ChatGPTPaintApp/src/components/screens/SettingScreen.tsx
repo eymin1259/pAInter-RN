@@ -10,7 +10,6 @@ const SettingScreen = () => {
     <View>
       <Text>setting</Text>
       <Pressable
-        style={{backgroundColor: 'purple'}}
         onPress={() => {
           dispatch(removeUserFromStorage());
         }}>
