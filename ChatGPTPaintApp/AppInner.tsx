@@ -38,7 +38,7 @@ const AppInner = () => {
   return (
     <>
       {isLoggedIn ? (
-        <Tab.Navigator>
+        <Tab.Navigator sceneContainerStyle={{backgroundColor: 'white'}}>
           <Tab.Screen
             name="Generate"
             component={Generate}
