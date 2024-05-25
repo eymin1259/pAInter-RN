@@ -2,25 +2,25 @@ import React, {ReactNode} from 'react';
 import styled from '@emotion/native';
 import {ActivityIndicator, Text} from 'react-native';
 
-interface IAuthButtonProps {
+interface IPurpleButtonProps {
   children: ReactNode;
   onPress?: () => void;
   isLoading?: boolean;
 }
 
-const AuthButton = ({children, onPress, isLoading}: IAuthButtonProps) => {
+const PurpleButton = ({children, onPress, isLoading}: IPurpleButtonProps) => {
   return (
-    <AuthPressable onPress={onPress} disabled={isLoading}>
+    <PurplePressable onPress={onPress} disabled={isLoading}>
       {isLoading ? (
         <ActivityIndicator color="white" />
       ) : (
         <Text style={{color: 'white', fontWeight: 'bold'}}>{children}</Text>
       )}
-    </AuthPressable>
+    </PurplePressable>
   );
 };
 
-const AuthPressable = styled.TouchableOpacity`
+const PurplePressable = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   width: 80%;
@@ -29,4 +29,4 @@ const AuthPressable = styled.TouchableOpacity`
   border-radius: 10px;
   margin-top: 20px;
 `;
-export default AuthButton;
+export default PurpleButton;
