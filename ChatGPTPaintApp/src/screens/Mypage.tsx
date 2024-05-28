@@ -1,8 +1,9 @@
 import React from 'react';
-import MypageScreen from '../components/screens/MypageScreen';
-
-const Mypage = () => {
-  return <MypageScreen />;
+import MyPageScreen from '../components/screens/MyPageScreen';
+import {useAppDispatch} from '../store';
+const MyPage = () => {
+  const dispatch = useAppDispatch();
+  return <MyPageScreen />;
 };
 
-export default Mypage;
+export default MyPage;
