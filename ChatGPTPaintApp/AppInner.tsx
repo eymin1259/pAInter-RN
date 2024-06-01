@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyPage from './src/screens/MyPage';
@@ -10,6 +10,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducer';
 import {useAppDispatch} from './src/store';
 import {getUserFromStorage} from './src/thunks/encryptedStorageThunk';
+import SplashScreen from 'react-native-splash-screen';
 
 export type LoggedInParamList = {
   Generate: undefined;
@@ -27,13 +28,21 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppInner = () => {
   const dispatch = useAppDispatch();
-  const isLoggedIn = useSelector(
-    (state: RootState) => !!state.user.uid && !!state.user.email,
-  );
+  const uid = useSelector((state: RootState) => state.user.uid);
+  const email = useSelector((state: RootState) => state.user.email);
+  const isLoggedIn = useMemo(() => {
+    return !!uid && !!email;
+  }, [uid, email]);
 
   useEffect(() => {
     dispatch(getUserFromStorage());
   }, [dispatch]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000);
+  }, []);
 
   return (
     <>
