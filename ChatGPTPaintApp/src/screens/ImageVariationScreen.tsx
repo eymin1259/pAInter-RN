@@ -1,6 +1,6 @@
 import React from 'react';
-import ImageVariationScreen from '../components/screens/ImageVariationScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ImageVariation from '../components/screens/ImageVariation';
 import ImageVariationResult from '../components/screens/ImageVariationResult';
 
 export type ImageVariationStackParamList = {
@@ -10,11 +10,11 @@ export type ImageVariationStackParamList = {
 
 const Stack = createNativeStackNavigator<ImageVariationStackParamList>();
 
-const ImageVariation = () => {
+const ImageVariationScreen = () => {
   return (
     <>
       <Stack.Navigator>
-        <Stack.Screen name="ImageVariation" component={ImageVariationScreen} />
+        <Stack.Screen name="ImageVariation" component={ImageVariation} />
         <Stack.Screen
           name="ImageVariationResult"
           component={ImageVariationResult}
@@ -24,4 +24,4 @@ const ImageVariation = () => {
   );
 };
 
-export default ImageVariation;
+export default ImageVariationScreen;

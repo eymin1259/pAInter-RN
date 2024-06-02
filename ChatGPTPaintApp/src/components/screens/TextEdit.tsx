@@ -1,14 +1,14 @@
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
-import {TextEditStackParamList} from '../../screens/TextEdit';
+import {TextEditStackParamList} from '../../screens/TextEditScreen';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type TextEditProps = NativeStackScreenProps<TextEditStackParamList, 'TextEdit'>;
 
-const TextEditScreen = ({navigation}: TextEditProps) => {
+const TextEdit = ({navigation}: TextEditProps) => {
   return (
     <View>
-      <Text>text edit Screen</Text>
+      <Text>text edit</Text>
       <Pressable
         onPress={() => {
           navigation.navigate('TextEditResult');
@@ -19,4 +19,4 @@ const TextEditScreen = ({navigation}: TextEditProps) => {
   );
 };
 
-export default TextEditScreen;
+export default TextEdit;

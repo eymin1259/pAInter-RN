@@ -1,6 +1,6 @@
 import {createApi, fakeBaseQuery} from '@reduxjs/toolkit/query/react';
 import auth, {firebase} from '@react-native-firebase/auth';
-import {ISignUpForm} from '../../screens/SignUp';
+import {ISignUpForm} from '../../screens/SignUpScreen';
 import {RootState} from '../../store/reducer';
 
 type SignUpData = Omit<ISignUpForm, 'cfpassword'>;

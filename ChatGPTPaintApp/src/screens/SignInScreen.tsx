@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import SignInScreen from '../components/screens/SignInScreen';
+import SignIn from '../components/screens/SignIn';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../AppInner';
 import {useSignInMutation} from '../hooks/api/authApi';
@@ -7,14 +7,14 @@ import {Alert} from 'react-native';
 import {useAppDispatch} from '../store';
 import {saveUserIntoStorage} from '../thunks/encryptedStorageThunk';
 
-type SignInPageProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
+type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
 export type SignInForm = {
   email: string;
   password: string;
 };
 
-const SignIn = ({navigation}: SignInPageProps) => {
+const SignInScreen = ({navigation}: SignInScreenProps) => {
   const dispatch = useAppDispatch();
   const [signIn, {isLoading, data, isError, error}] = useSignInMutation();
 
@@ -46,12 +46,8 @@ const SignIn = ({navigation}: SignInPageProps) => {
   }, [data, dispatch]);
 
   return (
-    <SignInScreen
-      gotoSignUp={gotoSignUp}
-      onSubmit={onSubmit}
-      isLoading={isLoading}
-    />
+    <SignIn gotoSignUp={gotoSignUp} onSubmit={onSubmit} isLoading={isLoading} />
   );
 };
 
-export default SignIn;
+export default SignInScreen;

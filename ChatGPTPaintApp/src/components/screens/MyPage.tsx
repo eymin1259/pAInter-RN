@@ -3,15 +3,12 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store/reducer';
 import TextBoxButton from '../common/TextBoxButton';
 
-interface IMyPageScreenProps {
+interface IMyPageProps {
   handleSignOut: () => void;
   hadleDeleteAccount: () => void;
 }
 
-const MyPageScreen = ({
-  handleSignOut,
-  hadleDeleteAccount,
-}: IMyPageScreenProps) => {
+const MyPage = ({handleSignOut, hadleDeleteAccount}: IMyPageProps) => {
   const userEmail = useSelector((state: RootState) => state.user.email);
 
   return (
@@ -25,4 +22,4 @@ const MyPageScreen = ({
   );
 };
 
-export default MyPageScreen;
+export default MyPage;

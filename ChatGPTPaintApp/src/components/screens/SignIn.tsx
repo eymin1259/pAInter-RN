@@ -6,16 +6,16 @@ import PurpleButton from '../common/PurpleButton';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import {Platform} from 'react-native';
-import {SignInForm} from '../../screens/SignIn';
+import {SignInForm} from '../../screens/SignInScreen';
 import {useForm, Controller} from 'react-hook-form';
 
-interface ISignInPageProps {
+interface ISignInProps {
   gotoSignUp: () => void;
   onSubmit: (data: SignInForm) => void;
   isLoading: boolean;
 }
 
-const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
+const SignIn = ({gotoSignUp, onSubmit, isLoading}: ISignInProps) => {
   const {
     control,
     handleSubmit,
@@ -26,6 +26,7 @@ const SignInScreen = ({gotoSignUp, onSubmit, isLoading}: ISignInPageProps) => {
       password: '',
     },
   });
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <View style={styles.OutterContainer}>
@@ -101,4 +102,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+export default SignIn;

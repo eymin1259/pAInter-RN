@@ -1,11 +1,11 @@
 import React, {useEffect, useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import MyPage from './src/screens/MyPage';
-import ImageVariation from './src/screens/ImageVariation';
-import TextEdit from './src/screens/TextEdit';
-import SignIn from './src/screens/SignIn';
-import SignUp from './src/screens/SignUp';
+import MyPageScreen from './src/screens/MyPageScreen';
+import ImageVariationScreen from './src/screens/ImageVariationScreen';
+import TextEditScreen from './src/screens/TextEditScreen';
+import SignInScreen from './src/screens/SignInScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
 import {useSelector} from 'react-redux';
 import {RootState} from './src/store/reducer';
 import {useAppDispatch} from './src/store';
@@ -49,18 +49,18 @@ const AppInner = () => {
       {isLoggedIn ? (
         <Tab.Navigator sceneContainerStyle={{backgroundColor: 'white'}}>
           <Tab.Screen
-            name="TextEdit"
-            component={TextEdit}
+            name="TextEditTab"
+            component={TextEditScreen}
             options={{title: 'Text Edit', headerShown: false}}
           />
           <Tab.Screen
-            name="ImageVariation"
-            component={ImageVariation}
+            name="ImageVariationTab"
+            component={ImageVariationScreen}
             options={{title: 'Image Variation', headerShown: false}}
           />
           <Tab.Screen
-            name="MyPage"
-            component={MyPage}
+            name="MyPageTab"
+            component={MyPageScreen}
             options={{title: 'MyPage'}}
           />
         </Tab.Navigator>
@@ -68,12 +68,12 @@ const AppInner = () => {
         <Stack.Navigator>
           <Stack.Screen
             name="SignIn"
-            component={SignIn}
+            component={SignInScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
             name="SignUp"
-            component={SignUp}
+            component={SignUpScreen}
             options={{headerShown: false, presentation: 'modal'}}
           />
         </Stack.Navigator>
