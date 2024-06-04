@@ -14,8 +14,16 @@ const TextEditScreen = () => {
   return (
     <>
       <Stack.Navigator>
-        <Stack.Screen name="TextEdit" component={TextEdit} />
-        <Stack.Screen name="TextEditResult" component={TextEditResult} />
+        <Stack.Screen
+          name="TextEdit"
+          component={TextEdit}
+          options={{title: 'Text Edit'}}
+        />
+        <Stack.Screen
+          name="TextEditResult"
+          component={TextEditResult}
+          options={{title: 'Edit Result'}}
+        />
       </Stack.Navigator>
     </>
   );

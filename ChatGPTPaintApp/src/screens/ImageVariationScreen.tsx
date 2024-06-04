@@ -14,10 +14,15 @@ const ImageVariationScreen = () => {
   return (
     <>
       <Stack.Navigator>
-        <Stack.Screen name="ImageVariation" component={ImageVariation} />
+        <Stack.Screen
+          name="ImageVariation"
+          component={ImageVariation}
+          options={{title: 'Image Variation'}}
+        />
         <Stack.Screen
           name="ImageVariationResult"
           component={ImageVariationResult}
+          options={{title: 'Variation Result'}}
         />
       </Stack.Navigator>
     </>
