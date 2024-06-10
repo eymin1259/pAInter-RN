@@ -1,5 +1,5 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import TextEdit from '../components/screens/TextEdit';
 import TextEditResult from '../components/screens/TextEditResult';
 
@@ -8,12 +8,15 @@ export type TextEditStackParamList = {
   TextEditResult: undefined;
 };
 
-const Stack = createNativeStackNavigator<TextEditStackParamList>();
+const Stack = createStackNavigator<TextEditStackParamList>();
+const TransitionScreenOptions = {
+  ...TransitionPresets.SlideFromRightIOS,
+};
 
 const TextEditScreen = () => {
   return (
     <>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={TransitionScreenOptions}>
         <Stack.Screen
           name="TextEdit"
           component={TextEdit}

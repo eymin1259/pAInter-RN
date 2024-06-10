@@ -1,5 +1,5 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import ImageVariation from '../components/screens/ImageVariation';
 import ImageVariationResult from '../components/screens/ImageVariationResult';
 
@@ -8,12 +8,15 @@ export type ImageVariationStackParamList = {
   ImageVariationResult: undefined;
 };
 
-const Stack = createNativeStackNavigator<ImageVariationStackParamList>();
+const Stack = createStackNavigator<ImageVariationStackParamList>();
+const TransitionScreenOptions = {
+  ...TransitionPresets.SlideFromRightIOS,
+};
 
 const ImageVariationScreen = () => {
   return (
     <>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={TransitionScreenOptions}>
         <Stack.Screen
           name="ImageVariation"
           component={ImageVariation}
@@ -22,7 +25,9 @@ const ImageVariationScreen = () => {
         <Stack.Screen
           name="ImageVariationResult"
           component={ImageVariationResult}
-          options={{title: 'Variation Result'}}
+          options={{
+            title: 'Variation Result',
+          }}
         />
       </Stack.Navigator>
     </>
