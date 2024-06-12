@@ -1,5 +1,5 @@
 import React from 'react';
-import PurpleTitle from '../common/PurpleTitle';
+import Title from '../common/Title';
 import EmailInput from '../auth/EmailInput';
 import PasswordInput from '../auth/PasswordInput';
 import PurpleButton from '../common/PurpleButton';
@@ -32,7 +32,7 @@ const SignUp = ({gotoSignIn, onSubmit, isLoading}: ISignUpProps) => {
       <View style={styles.OutterContainer}>
         <KeyboardAwareScrollView>
           <View style={styles.InnerContainer}>
-            <PurpleTitle>SignUp</PurpleTitle>
+            <Title>SignUp</Title>
             <Controller
               control={control}
               name="email"
