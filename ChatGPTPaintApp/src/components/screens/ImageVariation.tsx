@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store/reducer';
 import {useAppDispatch} from '../../store';
 import {resetPhotoInfo} from '../../slices/photoSlice';
+import PreviewImage from '../common/PreviewImage';
 
 type ImageVariationProps = NativeStackScreenProps<
   ImageVariationStackParamList,
@@ -48,9 +49,10 @@ const ImageVariation = ({navigation}: ImageVariationProps) => {
           paddingBottom="10px">
           Upload Image
         </ResourceUploadHeader>
-        <ImageContainer width={parentLayout.width * 0.8}>
-          {previewSrc && <PreviewImage source={{uri: previewSrc}} />}
-        </ImageContainer>
+        <PreviewImage
+          imageSize={parentLayout.width * 0.8}
+          imageUri={previewSrc}
+        />
       </ImageVariationContent>
       <PurpleButton
         fontSize="20px"
@@ -82,28 +84,6 @@ const ImageVariationContent = styled.View`
   }};
   justify-content: flex-start;
   align-items: center;
-`;
-
-interface ImageContainerProps {
-  width: number;
-}
-
-const ImageContainer = styled.View`
-  justify-content: center;
-  align-items: center;
-  background-color: #f7f7f7;
-  width: ${(props: ImageContainerProps) => {
-    return `${props.width}px`;
-  }};
-  height: ${(props: ImageContainerProps) => {
-    return `${props.width}px`;
-  }};
-  margin-top: 30px;
-`;
-
-const PreviewImage = styled.Image`
-  width: 100%;
-  height: 100%;
 `;
 
 export default ImageVariation;
