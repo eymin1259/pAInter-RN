@@ -6,7 +6,7 @@ import {removeUserFromStorage} from '../thunks/encryptedStorageThunk';
 import InputDialog from '../components/common/InputDialog';
 import useDialog from '../hooks/useDialog';
 import {DialogResult} from '../thunks/dialogThunk';
-import {useDeleteUserMutation} from '../hooks/api/authApi';
+import {useDeleteUserMutation} from '../hooks/api/useFirebaseAuth';
 import {Alert} from 'react-native';
 
 const MyPageScreen = () => {

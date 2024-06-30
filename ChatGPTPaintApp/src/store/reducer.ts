@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux';
-import {firebaseAuthApi} from '../hooks/api/authApi';
+import {useFirebaseAuth} from '../hooks/api/useFirebaseAuth';
 import dialogSlice from '../slices/dialogSlice';
 import photoSlice from '../slices/photoSlice';
 import userSlice from '../slices/userSlice';
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,
-  [firebaseAuthApi.reducerPath]: firebaseAuthApi.reducer,
+  [useFirebaseAuth.reducerPath]: useFirebaseAuth.reducer,
   dialog: dialogSlice.reducer,
   photo: photoSlice.reducer,
 });

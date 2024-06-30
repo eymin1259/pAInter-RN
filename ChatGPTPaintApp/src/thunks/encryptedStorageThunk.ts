@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import {IUserInfo} from '../hooks/api/authApi';
+import {IUserInfo} from '../hooks/api/useFirebaseAuth';
 
 export const saveUserIntoStorage = createAsyncThunk<IUserInfo, IUserInfo>(
   'encryptedStorageThunk/saveUserIntoStorage',
