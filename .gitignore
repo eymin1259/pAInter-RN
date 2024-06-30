@@ -285,4 +285,7 @@ GoogleService-Info.plist
 /ios/Pods/
 /vendor/bundle/
 
+# etc
+**/constants/APIKEY.ts
+
 # End of https://www.toptal.com/developers/gitignore/api/reactnative
