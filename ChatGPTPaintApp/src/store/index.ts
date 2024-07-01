@@ -1,12 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import {useFirebaseAuth} from '../hooks/api/useFirebaseAuth';
+import {postPhotoApi} from '../hooks/api/usePhotoPost';
 import rootReducer from './reducer';
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(useFirebaseAuth.middleware),
+    getDefaultMiddleware()
+      .concat(useFirebaseAuth.middleware)
+      .concat(postPhotoApi.middleware),
 });
 export default store;
 

@@ -41,8 +41,11 @@ const PhotoButton = ({resource}: PhotoButtonProps) => {
 
   const onTakePhoto = useCallback(() => {
     return ImagePicker.openCamera({
+      cropping: true,
       includeBase64: true,
       includeExif: true,
+      width: 256,
+      height: 256,
     })
       .then(onResponse)
       .catch(console.log);
@@ -50,9 +53,12 @@ const PhotoButton = ({resource}: PhotoButtonProps) => {
 
   const onSelectPhoto = useCallback(() => {
     return ImagePicker.openPicker({
+      cropping: true,
       includeBase64: true,
       includeExif: true,
       mediaType: 'photo',
+      width: 256,
+      height: 256,
     })
       .then(onResponse)
       .catch(console.log);
