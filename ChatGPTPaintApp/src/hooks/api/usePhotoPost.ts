@@ -26,9 +26,7 @@ export const postPhotoApi = createApi({
         formData.append('image', form);
         formData.append('n', 1);
         formData.append('size', '512x512');
-        // formData.append('response_format', 'b64_json');
         try {
-          console.log('postPhotoApi');
           const response = await axios.post<ImageVariationResponse>(
             'https://api.openai.com/v1/images/variations',
             formData,
@@ -40,8 +38,6 @@ export const postPhotoApi = createApi({
               },
             },
           );
-
-          console.log(response);
           if (response.data.data.length < 1) {
             throw Error('no image variation');
           }
