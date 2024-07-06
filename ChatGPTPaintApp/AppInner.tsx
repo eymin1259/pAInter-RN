@@ -3,7 +3,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyPageScreen from './src/screens/MyPageScreen';
 import ImageVariationScreen from './src/screens/ImageVariationScreen';
-import TextEditScreen from './src/screens/TextEditScreen';
 import SignInScreen from './src/screens/SignInScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import {useSelector} from 'react-redux';
@@ -13,6 +12,7 @@ import {getUserFromStorage} from './src/thunks/encryptedStorageThunk';
 import SplashScreen from 'react-native-splash-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import usePermissions from './src/hooks/usePermissions';
+import ImageGenerateScreen from './src/screens/ImageGenerateScreen';
 
 export type LoggedInParamList = {
   Generate: undefined;
@@ -53,13 +53,12 @@ const AppInner = () => {
       {isLoggedIn ? (
         <Tab.Navigator sceneContainerStyle={{backgroundColor: 'white'}}>
           <Tab.Screen
-            name="TextEditTab"
-            component={TextEditScreen}
+            name="ImageGenerateTab"
+            component={ImageGenerateScreen}
             options={{
-              title: 'Text Edit',
-              headerShown: false,
+              title: 'Image Generate',
               tabBarIcon: ({color}) => {
-                return <Ionicons name="pencil-sharp" size={20} color={color} />;
+                return <Ionicons name="brush" size={20} color={color} />;
               },
               tabBarActiveTintColor: '#A700CF',
             }}
