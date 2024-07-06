@@ -1,45 +1,29 @@
 import {createApi, fakeBaseQuery} from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
 import {OPENAIKEY} from '../../constants/APIKEY';
+import {ImageResponse} from './usePhotoPost';
 
-export interface ImageForm {
-  uri: string;
-  name: string;
-  type: string;
-}
-
-export interface ImageResponse {
-  data: [
-    {
-      url: string;
-    },
-  ];
-}
-
-export const postPhotoApi = createApi({
-  reducerPath: 'postPhotoApi',
+export const generateImageApi = createApi({
+  reducerPath: 'generateImageApi',
   baseQuery: fakeBaseQuery(),
   endpoints: builder => ({
-    postPhoto: builder.mutation<string, ImageForm>({
-      queryFn: async form => {
-        const formData = new FormData();
-        formData.append('image', form);
-        formData.append('n', 1);
-        formData.append('size', '512x512');
+    generateImage: builder.mutation<string, string>({
+      queryFn: async prompt => {
         try {
           const response = await axios.post<ImageResponse>(
-            'https://api.openai.com/v1/images/variations',
-            formData,
+            'https://api.openai.com/v1/images/generations',
+            {prompt: prompt, n: 1, size: '512x512'},
             {
               withCredentials: true,
               headers: {
                 Authorization: `Bearer ${OPENAIKEY}`,
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/json',
               },
             },
           );
+          console.log(response);
           if (response.data.data.length < 1) {
-            throw Error('no image variation');
+            throw Error('no image generation');
           }
           return {
             data: response.data.data[0].url,
@@ -47,9 +31,9 @@ export const postPhotoApi = createApi({
         } catch (err: any) {
           let errorMessage = 'unknown error';
           if (axios.isAxiosError(err)) {
-            errorMessage = err.response?.data.error.message;
+            errorMessage = err.response?.data.error.message as string;
           } else {
-            errorMessage = err.message;
+            errorMessage = err.message as string;
           }
           return {
             error: errorMessage,
@@ -60,4 +44,4 @@ export const postPhotoApi = createApi({
   }),
 });
 
-export const {usePostPhotoMutation} = postPhotoApi;
+export const {useGenerateImageMutation} = generateImageApi;
