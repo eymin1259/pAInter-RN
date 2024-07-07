@@ -82,7 +82,7 @@ const ImageVariationResult = () => {
         fontSize="20px"
         isLoading={isLoading || saveLoading}
         onPress={onClickSaveImage}>
-        save !
+        Save !
       </PurpleButton>
     </ImageVariationResultLayout>
   );
