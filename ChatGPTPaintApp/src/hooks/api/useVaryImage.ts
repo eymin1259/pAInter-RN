@@ -16,11 +16,11 @@ export interface ImageResponse {
   ];
 }
 
-export const postPhotoApi = createApi({
-  reducerPath: 'postPhotoApi',
+export const varyImageApi = createApi({
+  reducerPath: 'varyImageApi',
   baseQuery: fakeBaseQuery(),
   endpoints: builder => ({
-    postPhoto: builder.mutation<string, ImageForm>({
+    varyImage: builder.mutation<string, ImageForm>({
       queryFn: async form => {
         const formData = new FormData();
         formData.append('image', form);
@@ -60,4 +60,4 @@ export const postPhotoApi = createApi({
   }),
 });
 
-export const {usePostPhotoMutation} = postPhotoApi;
+export const {useVaryImageMutation} = varyImageApi;

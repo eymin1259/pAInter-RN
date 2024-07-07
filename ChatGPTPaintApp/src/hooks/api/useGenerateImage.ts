@@ -1,7 +1,7 @@
 import {createApi, fakeBaseQuery} from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
 import {OPENAIKEY} from '../../constants/APIKEY';
-import {ImageResponse} from './usePhotoPost';
+import {ImageResponse} from './useVaryImage';
 
 export const generateImageApi = createApi({
   reducerPath: 'generateImageApi',
