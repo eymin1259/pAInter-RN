@@ -67,7 +67,7 @@ const ImageGenerate = () => {
       <ViewShot
         ref={imageRef}
         options={{
-          fileName: `${Date.now()}-gerate`,
+          fileName: `${Date.now()}-generate`,
           format: 'png',
           quality: 1,
         }}>

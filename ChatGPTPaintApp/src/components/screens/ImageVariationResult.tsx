@@ -67,7 +67,7 @@ const ImageVariationResult = () => {
         <ViewShot
           ref={imageRef}
           options={{
-            fileName: `${selectedImage.name}-variation`,
+            fileName: `${Date.now()}-variation`,
             format: 'png',
             quality: 1,
           }}>
