@@ -19,6 +19,7 @@ const PasswordInput = ({
         keyboardType="ascii-capable"
         placeholder={placeholder}
         onChangeText={onChangeText}
+        secureTextEntry={true}
       />
       <PasswordValidationError>{error}</PasswordValidationError>
     </PasswordInputContainer>
