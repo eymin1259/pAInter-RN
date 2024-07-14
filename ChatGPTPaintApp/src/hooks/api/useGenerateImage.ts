@@ -21,7 +21,6 @@ export const generateImageApi = createApi({
               },
             },
           );
-          console.log(response);
           if (response.data.data.length < 1) {
             throw Error('no image generation');
           }
