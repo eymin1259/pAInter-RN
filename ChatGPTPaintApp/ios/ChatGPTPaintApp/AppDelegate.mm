@@ -2,6 +2,10 @@
 #import "RNSplashScreen.h"
 #import <React/RCTBundleURLProvider.h>
 #import <Firebase.h>
+#import <CodePush/CodePush.h>
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
 
 @implementation AppDelegate
 
@@ -14,6 +18,11 @@
   [FIRApp configure];
   bool didFinish = [super application:application didFinishLaunchingWithOptions:launchOptions];
   [RNSplashScreen show];
+  
+  [AppCenterReactNative register];
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+  
   return didFinish;
 }
 
@@ -22,7 +31,7 @@
 #if DEBUG
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
 #else
-  return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  return [CodePush bundleURL];
 #endif
 }
 
