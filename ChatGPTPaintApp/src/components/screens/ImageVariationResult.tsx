@@ -5,11 +5,11 @@ import PreviewImage from '../common/PreviewImage';
 import PurpleButton from '../common/PurpleButton';
 import {useAppDispatch} from '../../store';
 import {resetPhotoInfo} from '../../slices/photoSlice';
-import {useVaryImageMutation} from '../../hooks/api/useVaryImage';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/reducer';
 import ViewShot from 'react-native-view-shot';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {useImageVariationMutation} from '../../hooks/api/useImageVariationMutation';
 
 const ImageVariationResult = () => {
   const dispatch = useAppDispatch();
@@ -22,8 +22,8 @@ const ImageVariationResult = () => {
     (state: RootState) => state.photo.imageInfo,
   );
   const [saveLoading, setSaveLoading] = useState(false);
-  const [varyImage, {data: resultUri, isLoading, isError, error}] =
-    useVaryImageMutation();
+  const [imageVariation, {data, isLoading, isError, error}] =
+    useImageVariationMutation();
 
   const onLayout = (event: LayoutChangeEvent) => {
     const {height, width} = event.nativeEvent.layout;
@@ -38,7 +38,7 @@ const ImageVariationResult = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    varyImage(selectedImage);
+    imageVariation(selectedImage);
   }, []);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const ImageVariationResult = () => {
           <PreviewImage
             imageSize={parentLayout.width * 0.8}
             isLoading={isLoading}
-            imageUri={resultUri ?? ''}
+            imageUri={data?.url ?? ''}
           />
         </ViewShot>
       </VariationResultContent>
